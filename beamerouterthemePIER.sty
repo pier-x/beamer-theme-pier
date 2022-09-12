@@ -1,0 +1,37 @@
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{PIER}[1][]{
+  \begin{beamercolorbox}[wd=\paperwidth, ht=1.5cm]{frametitle}
+    \begin{tikzpicture}
+      \useasboundingbox[] (0, 0) rectangle (\paperwidth, 1.2);
+      \node[inner sep=0, outer sep=0, anchor=south west] at (0.5cm, 0cm) {\includegraphics[height=1.2cm]{resources/pier-logo.pdf}};
+      \ifx\insertframesubtitle\@empty%
+        {\node[anchor=east, font=\LARGE, align=right] at (\paperwidth - 0.5cm,  0.61){\insertframetitle};}
+      \else%
+        {\node[anchor=east, font=\Large] at (\paperwidth - 0.5cm, 0.81){\insertframetitle};%
+        \node[anchor=east, font=\small, text=subtitle.fg] at (\paperwidth - 0.5cm, 0.41){\insertframesubtitle};}%
+      \fi
+    \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+% Footline
+\defbeamertemplate*{footline}{PIER}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.25\paperwidth, ht=2.25ex, dp=1ex, right]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+    \begin{beamercolorbox}[wd=1ex, ht=2.25ex, dp=1ex]{sep}%
+    \end{beamercolorbox}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.7\paperwidth, ht=2.25ex, dp=1ex, left]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\hspace*{1ex}\insertsection
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.05\paperwidth, ht=2.25ex, dp=1ex, right]{page number in head/foot}%
+    \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\mode<all>

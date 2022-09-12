@@ -1,0 +1,119 @@
+% !TeX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{etoolbox}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+
+
+\BeforeBeginEnvironment{frame}{%
+  \setbeamertemplate{background}{
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle(\paperwidth, \paperheight);
+      \node[inner sep=0,outer sep=0, anchor=south east] (fold) at (\paperwidth, 0) {\includegraphics[width=1.2cm]{resources/fold.pdf}};
+    \end{tikzpicture}
+  }
+  \setbeamertemplate{frametitle}[PIER]%
+  \setbeamertemplate{footline}[PIER]%
+  % \setbeamertemplate{footline}{\hfill\usebeamercolor{white}\insertframenumber{}}
+  \normalsize%
+  \normalcolor%
+}
+
+\makeatletter
+
+  \define@key{beamerframe}{paper}[true]{%
+    \setbeamertemplate{background}{
+      \begin{tikzpicture}
+        \usebeamercolor{palette primary}
+        \useasboundingbox (0,0) rectangle (\paperwidth, \paperheight);
+        \fill[fill=fg] (0, 0) rectangle (\paperwidth, \paperheight);
+        \fill[white] (0.5, 0.5) rectangle (\paperwidth - 0.5cm, \paperheight - 0.5cm);
+      \end{tikzpicture}
+    }
+    \setbeamertemplate{frametitle}{
+      \begin{beamercolorbox}[wd=\paperwidth, ht=1.5cm, center]{frametitle}
+        \insertframetitle
+      \end{beamercolorbox}
+    }
+    \setbeamertemplate{footline}{}
+  }
+
+\makeatother
+
+\setbeamertemplate{page number in head/foot}[framenumber]
+
+\setmainfont[
+	Path=\string./fonts/,
+	UprightFont=*-regular.otf,
+	BoldFont=*-bold.otf,
+	AutoFakeSlant=0.2,
+	BoldItalicFeatures={
+    Font=*-bold,
+    FakeSlant=0.2,
+  }
+]{muttayat}
+
+\setsansfont[
+	Path=\string./fonts/,
+	UprightFont=*-regular.otf,
+	BoldFont=*-bold.otf,
+	AutoFakeSlant=0.2,
+	BoldItalicFeatures={
+    Font=*-bold,
+    FakeSlant=0.2,
+  }
+]{dindanmai}
+
+\title{Title of the Presentation}
+\subtitle{This is the catchy subtitle}
+\author{John Doe}
+% \institute{Puey Ungphakorn}
+\date{\today}
+
+\usetheme{PIER}
+
+\begin{document}
+  
+\begin{frame}[paper]
+  \titlepage
+  \begin{center}
+    \includegraphics[height=1.5cm]{resources/pier-logo.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sample frame title without subtitle}
+  This is some text  in the first frame. This is some text in the first frame. This is some text in the first frame.
+\end{frame}
+
+\section{Methodology}
+\begin{frame}[paper]
+  \sectionpage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sample frame with subtitle}
+  \framesubtitle{This is the subtitle}
+  This is some more text. ภาษาไทยก็ได้นะเออ
+  \begin{itemize}
+    \item Item A
+      \begin{itemize}
+        \item Test sub A
+          \begin{itemize}
+            \item Test sub sub A
+          \end{itemize}
+      \end{itemize}
+    \item Item B
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+
+\end{document}
